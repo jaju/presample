@@ -1,0 +1,33 @@
+<h1>Listing boards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Purpose text</th>
+      <th>Visibility</th>
+      <th>Deleted</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= board.title %></td>
+        <td><%= board.purpose_text %></td>
+        <td><%= board.visibility %></td>
+        <td><%= board.deleted %></td>
+        <td><%= board.user %></td>
+        <td><%= link_to 'Show', board %></td>
+        <td><%= link_to 'Edit', edit_board_path(board) %></td>
+        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Board', new_board_path %>

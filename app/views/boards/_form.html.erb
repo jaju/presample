@@ -1,0 +1,15 @@
+<%= simple_form_for(@board) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :purpose_text %>
+    <%= f.input :visibility %>
+    <%= f.input :deleted %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

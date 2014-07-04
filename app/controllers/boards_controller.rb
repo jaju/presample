@@ -29,6 +29,7 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @board.user = current_user
 
     respond_to do |format|
       if @board.save

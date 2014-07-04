@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>User description:</strong>
+  <%= @pin.user_description %>
+</p>
+
+<p>
+  <strong>Link url:</strong>
+  <%= @pin.link_url %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @pin.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pin.user %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @pin.board %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>

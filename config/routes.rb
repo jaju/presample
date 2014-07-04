@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pins
+
   resources :boards
 
   devise_for :admin_users, ActiveAdmin::Devise.config

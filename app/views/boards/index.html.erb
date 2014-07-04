@@ -1,33 +1,42 @@
-<h1>Listing boards</h1>
-
-<table>
+<%- model_class = Board -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Board %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Purpose text</th>
-      <th>Visibility</th>
-      <th>Deleted</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:purpose_text) %></th>
+      <th><%= model_class.human_attribute_name(:visibility) %></th>
+      <th><%= model_class.human_attribute_name(:deleted) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @boards.each do |board| %>
       <tr>
+        <td><%= board.id %></td>
         <td><%= board.title %></td>
         <td><%= board.purpose_text %></td>
         <td><%= board.visibility %></td>
         <td><%= board.deleted %></td>
-        <td><%= board.user %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l board.created_at, format: :long %></td>
+        <td>
+          <%= link_to board_path(board), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to board_path(board), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Board', new_board_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_board_path,
+            :class => 'btn btn-primary' %>

@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Board -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Board %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @board.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:purpose_text) %></dt>
+      <dd><pre class="prettyprint"><%= @board.purpose_text %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:visibility) %></dt>
+      <dd><pre class="prettyprint"><%= @board.visibility %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:deleted) %></dt>
+      <dd><pre class="prettyprint"><%= @board.deleted %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Purpose text:</strong>
-  <%= @board.purpose_text %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              boards_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_board_path(@board), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              board_path(@board),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Visibility:</strong>
-  <%= @board.visibility %>
-</p>
-
-<p>
-  <strong>Deleted:</strong>
-  <%= @board.deleted %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @board.user %>
-</p>
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>

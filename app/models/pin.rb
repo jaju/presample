@@ -4,4 +4,5 @@ class Pin < ActiveRecord::Base
   has_many :tags
   has_many :pin_images
   has_many :pin_attachments
+  validates_formatting_of :link_url, using: :url
 end

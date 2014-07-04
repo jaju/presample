@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primary_domain: MyString
+  inactive: false
+  name: MyString
+  website: MyString
+  logo_color: MyString
+  logo_text: MyString
+  deleted: false
+
+two:
+  primary_domain: MyString
+  inactive: false
+  name: MyString
+  website: MyString
+  logo_color: MyString
+  logo_text: MyString
+  deleted: false

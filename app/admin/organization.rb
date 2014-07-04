@@ -1,4 +1,5 @@
 ActiveAdmin.register Organization do
+  permit_params :primary_domain, :inactive, :name, :website, :logo_color, :logo_text, :deleted
 
   
   # See permitted parameters documentation:
